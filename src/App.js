@@ -1,10 +1,20 @@
-import './App.css';
+import * as React from 'react';
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, Container } from "@mui/material";
+import ListScreen from "./screens/suggestions/list/ListScreen";
+import AppMenu from './components/Menu';
+
+const theme = createTheme({ });
 
 function App() {
   return (
-    <div className="App">
-        Suggestion Box
-    </div>
+    <ThemeProvider theme={theme}>
+    <AppMenu/>
+    <br/>
+      <Container maxWidth={"lg"}>
+          <ListScreen/>
+        </Container>
+    </ThemeProvider>
   );
 }
 
