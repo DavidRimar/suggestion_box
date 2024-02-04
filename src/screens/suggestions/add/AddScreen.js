@@ -4,7 +4,7 @@ import { TextField } from "formik-mui";
 import SubmitButton from "../../../components/SubmitButton";
 
 
-function NewScreen() {
+function AddScreen() {
     return (<>
             <Typography variant={"h4"}>Add new suggestion</Typography>
             <br/>
@@ -28,4 +28,4 @@ function NewScreen() {
     );
 };
 
-export default NewScreen;
+export default AddScreen;
