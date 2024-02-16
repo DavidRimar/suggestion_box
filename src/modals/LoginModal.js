@@ -6,22 +6,20 @@ import SubmitButton from "../components/SubmitButton";
 
 function LoginModal() {
     return (<Dialog open={true}>
-        <DialogTitle>
-            Login
-        </DialogTitle>
+        <DialogTitle>Login</DialogTitle>
         <DialogContent>
             <br/>
             <Formik initialValues={{}}>
                 <Form>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Field component={TextField} name="username" label="UserName" type="text" fullWidth/>
+                            <Field component={TextField} name="username" label="Username" type="text" fullWidth/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field component={TextField} name="password" label="Password" type="text" fullWidth/>
+                            <Field component={TextField} name="password" label="Password" type="password" fullWidth/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field component={SubmitButton} label={"Log In"}/>
+                            <Field component={SubmitButton} label={"Login"}/>
                         </Grid>
                     </Grid>
                 </Form>

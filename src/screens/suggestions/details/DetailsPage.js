@@ -1,7 +1,7 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import UserList from "./components/UserList";
 
-function DetailsScreen() {
+function DetailsPage() {
     return (
             <Grid container spacing={2}>
                 <br/>
@@ -15,10 +15,10 @@ function DetailsScreen() {
                     <UserList/>
                 </Grid>
                 <Grid item xs={12}>
-                    <UserList/>
+                    <Button variant={"outlined"} fullWidth> Like / Unlike</Button>
                 </Grid>
             </Grid>
     );
 };
 
-export default DetailsScreen;
+export default DetailsPage;

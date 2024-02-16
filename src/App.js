@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme, Container } from "@mui/material";
-//import ListScreen from "./screens/suggestions/list/ListScreen";
+import ListScreen from "./screens/suggestions/list/ListScreen";
 import AppMenu from './components/Menu';
-import DetailsScreen from './screens/suggestions/details/DetailsScreen';
+//import DetailsScreen from './screens/suggestions/details/DetailsPage';
 
 const theme = createTheme({ });
 
@@ -13,7 +13,7 @@ function App() {
     <AppMenu/>
     <br/>
       <Container maxWidth={"lg"}>
-          <DetailsScreen/>
+          <ListScreen/>
         </Container>
     </ThemeProvider>
   );

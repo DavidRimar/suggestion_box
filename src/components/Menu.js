@@ -8,6 +8,8 @@ function AppMenu(){
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Suggestion Box
                 </Typography>
+                    <Button color="inherit">My Suggestions</Button>
+                    <Button color="inherit">Logout</Button>
                     <Button color="inherit">Login</Button>
                     <Button color="inherit">Register</Button>
                 </Toolbar>
