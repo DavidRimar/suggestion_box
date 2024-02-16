@@ -11,6 +11,7 @@ function ListScreen() {
             "limit": 5,
             "cursor": ""
         }).then(response => {
+            console.log(response.data.suggestions[0])
             setList(response.data.suggestions)
         })
     }, [setList])

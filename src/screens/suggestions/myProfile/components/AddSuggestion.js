@@ -1,6 +1,8 @@
 import { Grid, Card, CardActions, CardContent, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function AddSuggestion() {
+    const navigate = useNavigate();
     return <Grid item xs={12} md={4} lg={3}>
         <Card elevation={0}>
             <CardContent>
@@ -12,7 +14,9 @@ function AddSuggestion() {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant={"outlined"} fullWidth>Add new suggestion</Button>
+                <Button variant={"outlined"} fullWidth onClick={() => {
+                                navigate('/new')
+                            }}>Add new suggestion</Button>
             </CardActions>
     </Card>
   </Grid>  
