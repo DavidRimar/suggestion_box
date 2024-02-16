@@ -1,15 +1,15 @@
 import { Delete, Favorite } from "@mui/icons-material";
 import { Grid, Card, CardActions, CardContent, Button, Typography, IconButton } from "@mui/material";
 
-function Suggestion() {
+function Suggestion({title}, {description}) {
     return <Grid item xs={12} md={4} lg={3}>
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography variant={"h4"}>
-                    Title
+                    {title}
                 </Typography>
                 <Typography variant={"body1"}>
-                    Description text as...
+                    {description}
                 </Typography>
             </CardContent>
             <CardActions>
