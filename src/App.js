@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container } from "@mui/material";
 import ListScreen from "./screens/suggestions/list/ListScreen";
-import AppMenu from './components/Menu';
+import AppMenu from './components/AppMenu';
 import {Route, Routes } from 'react-router-dom';
 import MyProfilePage from './screens/suggestions/myProfile/MyProfileScreen';
 import DetailsPage from './screens/suggestions/details/DetailsPage';
@@ -16,7 +16,7 @@ function App() {
       <Provider>
       <AppMenu/>
       <br/>
-        <Container maxWidth={"lg"}>
+        <Container maxWidth="lg">
           <Routes>
             <Route path="/" element={<ListScreen/>}/>
             <Route path="/myprofile" element={<MyProfilePage/>}/>
