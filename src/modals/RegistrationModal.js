@@ -4,8 +4,8 @@ import { TextField } from "formik-mui";
 import SubmitButton from "../components/SubmitButton";
 
 
-function RegistrationModal() {
-    return (<Dialog open={true}>
+function RegistrationModal({onClose}) {
+    return (<Dialog open={true} onClose={onClose}>
         <DialogTitle>
             Registration
         </DialogTitle>

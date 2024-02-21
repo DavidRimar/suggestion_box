@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function Suggestion({id, title, description}) {
     const navigate = useNavigate();
+
+
     return <Grid item xs={12} md={4} lg={3}>
         <Card sx={{ minWidth: 275 }}>
             <CardContent>

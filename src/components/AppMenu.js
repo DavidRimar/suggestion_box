@@ -1,10 +1,13 @@
 import { Box, AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { useModals, MODALS } from '../hooks/useModal';
 
 function AppMenu(){
     const navigate = useNavigate();
     const { handleLoginResult, handleLogout, authToken } = useAuth();
+    const { showModal } = useModals();
+
     return (
         <Box>
             <AppBar position="static">
@@ -13,8 +16,12 @@ function AppMenu(){
                     Suggestion Box
                 </Typography>
                     {authToken === false && (<>
-                        <Button color="inherit">Login</Button>
-                        <Button color="inherit">Register</Button>
+                        <Button color="inherit" onClick={() => {
+                            showModal(MODALS.LOGIN);
+                        }}>Login</Button>
+                        <Button color="inherit" onClick={() => {
+                            showModal(MODALS.REG);
+                        }}>Register</Button>
                     </>)}
                     {authToken !== false && (<>
                         <Button color="inherit" onClick={() => {

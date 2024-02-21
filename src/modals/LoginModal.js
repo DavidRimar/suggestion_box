@@ -4,8 +4,8 @@ import { TextField } from "formik-mui";
 import SubmitButton from "../components/SubmitButton";
 
 
-function LoginModal() {
-    return (<Dialog open={true}>
+function LoginModal({onClose}) {
+    return (<Dialog open={true} onClose={onClose}>
         <DialogTitle>Login</DialogTitle>
         <DialogContent>
             <br/>

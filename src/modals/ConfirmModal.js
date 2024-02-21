@@ -1,8 +1,8 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 
 
-function ConfirmModal() {
-    return (<Dialog open={true}>
+function ConfirmModal({onClose}) {
+    return (<Dialog open={true} onClose={onClose}>
         <DialogTitle>
             Confirmation Required
         </DialogTitle>

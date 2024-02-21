@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useState} from 'react';
 
-const AuthContext = React.createcontext();
+const AuthContext = React.createContext();
 AuthContext.displayName = 'AuthContext';
 
 export function AuthContextProvider({children}) {
