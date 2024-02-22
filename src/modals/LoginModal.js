@@ -5,7 +5,6 @@ import SubmitButton from "../components/SubmitButton";
 import { AXIOS_METHOD, makeApiCall } from "../hooks/useApi";
 import { useAuth } from "../hooks/useAuth";
 
-
 function LoginModal({onClose}) {
     const { handleLoginResult } = useAuth();
     
@@ -26,7 +25,7 @@ function LoginModal({onClose}) {
                 <Form>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Field component={TextField} name="username" label="Username" type="text" fullWidth/>
+                            <Field component={TextField} name="name" label="Username" type="text" fullWidth/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field component={TextField} name="password" label="Password" type="password" fullWidth/>
