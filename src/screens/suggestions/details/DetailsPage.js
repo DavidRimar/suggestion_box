@@ -1,20 +1,20 @@
 import { Button, Grid, Typography } from "@mui/material";
 import UserList from "./components/UserList";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { AXIOS_METHOD, makeApiCall } from "../../../hooks/useApi";
+import { useNavigate, useParams } from "react-router-dom";
+import { AXIOS_METHOD, useApi } from "../../../hooks/useApi";
+import LoadingBar from "../../../components/LoadingBar";
 
 function DetailsPage() {
     const { id } = useParams();
-    const [suggestion, setSuggestion] = useState(false);
+    const navigate = useNavigate();
+    const [suggestion, loading, error] = useApi(AXIOS_METHOD.GET, `/suggestion/${id}`);
 
-    useEffect(() => {
-        makeApiCall(AXIOS_METHOD.GET, `/suggestion/${id}`, (suggestionData) => {
-            setSuggestion(suggestionData);
-        });
-    }, [id]);
+    if (loading === true) {
+        return <LoadingBar/>;
+    }
 
-    if (suggestion === false) {
+    if (loading === true && error !== false) {
+        navigate('/404');
         return null;
     }
 
