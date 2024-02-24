@@ -2,7 +2,7 @@ import { Delete, Favorite } from "@mui/icons-material";
 import { Grid, Card, CardActions, CardContent, Button, Typography, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-function Suggestion({id, title, description}) {
+function Suggestion({id, title, description, onDelete}) {
     const navigate = useNavigate();
 
 
@@ -23,9 +23,9 @@ function Suggestion({id, title, description}) {
                 <IconButton>
                     <Favorite/>
                 </IconButton>
-                <IconButton>
+                {onDelete && <IconButton onClick={onDelete}>
                     <Delete/>
-                </IconButton>
+                </IconButton>}
             </CardActions>
     </Card>
   </Grid>  

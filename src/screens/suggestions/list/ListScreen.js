@@ -1,23 +1,32 @@
 import { Grid } from "@mui/material";
 import Suggestion from "../../../components/Suggestion"
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { AXIOS_METHOD, useApi } from "../../../hooks/useApi";
+import LoadingBar from "../../../components/LoadingBar";
+import { useNavigate } from "react-router-dom";
 
 function ListScreen() {
-    const [list, setList] = useState([]);
-    useEffect(() => {
-        axios.post('https://otletdoboz.webuni.workers.dev/suggestions', {
-            "author": "",
-            "limit": 5,
-            "cursor": ""
-        }).then(response => {
-            console.log(response.data.suggestions[0])
-            setList(response.data.suggestions)
-        })
-    }, [setList])
+    const navigate = useNavigate();
+    const [suggestionList, loading, error] = useApi(AXIOS_METHOD.GET, '/suggestions', 
+    {
+        "author": "",
+        "limit": 5,
+        "cursor": ""
+    });
+
+    if (loading === true) {
+        return <LoadingBar/>;
+    }
+
+    if (loading === false && error !== false) {
+        navigate('/500');
+        return null;
+    }
+
     return <Grid container spacing={2}>
-        {list.map(item => {
-            return (<Suggestion {...item}/>)
+        {suggestionList?.suggestions.map(item => {
+            return (<Suggestion id={item?.id} 
+                                description={item?.description} 
+                                title={item?.title}/>)
         })}
     </Grid>
 }

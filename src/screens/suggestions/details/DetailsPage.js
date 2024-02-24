@@ -13,7 +13,7 @@ function DetailsPage() {
         return <LoadingBar/>;
     }
 
-    if (loading === true && error !== false) {
+    if (loading === false && error !== false) {
         navigate('/404');
         return null;
     }
