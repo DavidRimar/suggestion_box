@@ -1,11 +1,8 @@
 import { Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-function UserList() {
+function UserList({users}) {
     const navigate = useNavigate();
-    const users = [{id: 1, name: 'Bukayo Saka'},
-                   {id: 2, name: 'Martin Odegaard'},
-                   {id: 3, name: 'Gabriel Martinelli'}];
 
     return (
         <>

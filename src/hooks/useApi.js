@@ -13,7 +13,6 @@ export function setApiToken(newToken) {
 };
 
 export function makeApiCall(method, url, onSuccess, onFailure = false, data = {}) {
-    let axiosCall = method === AXIOS_METHOD.POST ? axios.post : axios.get;
     axios({
         method,
         url: `${BASE_URL}${url}`,
