@@ -1,7 +1,7 @@
 import { Box, AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { useModals, MODALS } from '../hooks/useModal';
+import { useModals, MODALS } from '../hooks/useModals';
 
 function AppMenu(){
     const navigate = useNavigate();

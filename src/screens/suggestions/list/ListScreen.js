@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 function ListScreen() {
     const navigate = useNavigate();
-    const [suggestionList, loading, error] = useApi(AXIOS_METHOD.GET, '/suggestions', 
+    const [suggestionList, loading, error] = useApi(AXIOS_METHOD.POST, '/suggestions', 
     {
         "author": "",
         "limit": 5,
         "cursor": ""
     });
+
+    console.log(suggestionList)
 
     if (loading === true) {
         return <LoadingBar/>;
@@ -23,10 +25,11 @@ function ListScreen() {
     }
 
     return <Grid container spacing={2}>
-        {suggestionList?.suggestions.map(item => {
+        {suggestionList?.suggestions?.map(item => {
             return (<Suggestion id={item?.id} 
                                 description={item?.description} 
-                                title={item?.title}/>)
+                                title={item?.title}
+                    />)
         })}
     </Grid>
 }

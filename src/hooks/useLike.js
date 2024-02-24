@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "./useAuth";
-import { useModals, MODALS } from '../useModal';
+import { useModals, MODALS } from './useModals';
 import { AXIOS_METHOD, makeApiCall } from "./useApi";
 
 function getLikedIdsFromSessionUser(sessionUser) {
