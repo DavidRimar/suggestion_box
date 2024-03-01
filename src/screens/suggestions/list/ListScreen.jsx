@@ -26,7 +26,7 @@ function ListScreen() {
 
     return <Grid container spacing={2}>
         {suggestionList?.suggestions?.map(item => {
-            return (<Suggestion id={item?.id} 
+            return (<Suggestion key={item?.id} id={item?.id} 
                                 description={item?.description} 
                                 title={item?.title}
                     />)
