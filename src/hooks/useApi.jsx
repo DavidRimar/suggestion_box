@@ -11,7 +11,7 @@ let authToken = false;
 
 export function setApiToken(newToken) {
     authToken = newToken;
-};
+}
 
 export function makeApiCall(method, url, onSuccess, onFailure = false, data = {}) {
     axios({
@@ -30,7 +30,7 @@ export function makeApiCall(method, url, onSuccess, onFailure = false, data = {}
     });
 }
 
-export function useApi(method, uri, postData = undefined, deps = []) {
+export function useApi(method, uri, data = undefined, deps = []) {
     const [responseData, setResponseData] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -45,8 +45,8 @@ export function useApi(method, uri, postData = undefined, deps = []) {
             setError(errorMessage);
             setResponseData(false);
             setLoading(false);
-        }, postData);
-    }, [uri, JSON.stringify(postData), ...deps]);
+        }, data);
+    }, [uri, JSON.stringify(data), ...deps]);
 
     return [responseData, loading, error];
 }

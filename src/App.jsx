@@ -9,7 +9,7 @@ import UserPage from './screens/suggestions/user/UserPage';
 import Page404 from './Page404';
 import Provider from './Provider';
 import AddScreen from './screens/suggestions/add/AddScreen';
-import { useAuth } from './hooks/useAuth';
+import { useAuth } from "./hooks/useAuth";
 
 // eslint-disable-next-line react/prop-types
 function ProtectedPage({children}) {
@@ -23,9 +23,9 @@ function ProtectedPage({children}) {
 function App() {
   return (
       <Provider>
-      <AppMenu/>
-      <br/>
-        <Container maxWidth="lg">
+        <AppMenu/>
+        <br/>
+        <Container maxWidth={"lg"}>
           <Routes>
             <Route path="/" element={<ListScreen/>}/>
             <Route path="/myprofile" element={<ProtectedPage>

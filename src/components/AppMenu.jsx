@@ -5,14 +5,14 @@ import { useModals, MODALS } from '../hooks/useModals';
 
 function AppMenu(){
     const navigate = useNavigate();
-    const { handleLoginResult, handleLogout, authToken } = useAuth();
+    const { authToken, handleLogout } = useAuth();
     const { showModal } = useModals();
 
     return (
         <Box>
             <AppBar position="static">
                 <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => navigate("/")}>
                     Suggestion Box
                 </Typography>
                     {authToken === false && (<>
@@ -29,16 +29,6 @@ function AppMenu(){
                          }}>My Suggestions</Button>
                         <Button color="inherit" onClick={handleLogout}>Logout</Button>
                     </>)}
-                    <button onClick={() => {
-                        handleLoginResult({
-                            "token": "",
-                            "user": {
-                                "id": "",
-                                "name": "",
-                                "likes": []
-                            }
-                        })
-                    }}>DummyLogin</button>
                 </Toolbar>
             </AppBar>
 
