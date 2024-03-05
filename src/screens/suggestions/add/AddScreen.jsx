@@ -5,6 +5,20 @@ import SubmitButton from "../../../components/SubmitButton";
 import { useNavigate } from "react-router-dom";
 import { makeApiCall, AXIOS_METHOD } from "../../../hooks/useApi";
 
+function validateTitle(title) {
+    if (title === '') {
+        return 'There should be title!';
+    }
+    if (title.length > 80) {
+        return 'Maximum length of the title should be 80 characters!';
+    }
+}
+
+function validateDescription(description) {
+    if (description === '') {
+        return 'Describe your suggestion!';
+    }
+}
 
 function AddScreen() {
     const navigate = useNavigate();
@@ -26,11 +40,13 @@ function AddScreen() {
                 <Form>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Field component={TextField} name="title" label="Title" type="text" fullWidth/>
+                            <Field component={TextField} name="title" label="Title" type="text" fullWidth
+                                validate={validateTitle}
+                            />
                         </Grid>
                         <Grid item xs={12}>
                             <Field component={TextField} name="description" label="Description" type="text" 
-                            multiline fullWidth minRows={8}/>
+                            multiline fullWidth minRows={8} validate={validateDescription}/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field component={SubmitButton} label={"Publish Suggestion"}/>
