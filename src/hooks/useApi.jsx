@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const BASE_URL = "https://otletdoboz.webuni.workers.dev";
 export const AXIOS_METHOD = {
@@ -35,7 +35,7 @@ export function useApi(method, uri, data = undefined, deps = []) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    useEffect(() => {
+    const apiCallback = useCallback((apiResponseData) => {
         setLoading(true);
         makeApiCall(method, uri, (response) => {
             setResponseData(response);
@@ -45,8 +45,12 @@ export function useApi(method, uri, data = undefined, deps = []) {
             setError(errorMessage);
             setResponseData(false);
             setLoading(false);
-        }, data);
-    }, [uri, JSON.stringify(data), ...deps]);
+        }, apiResponseData);
+    }, [method, uri, setResponseData, setLoading, setError]);
 
-    return [responseData, loading, error];
+    useEffect(() => {
+        apiCallback(data);
+    }, [apiCallback, uri, JSON.stringify(data), ...deps]);
+
+    return [responseData, loading, error, apiCallback];
 }
