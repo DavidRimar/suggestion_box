@@ -8,7 +8,7 @@ function UserList({users}) {
         <>
             {users?.map(user => {
                 return (<Chip variant="outlined"
-                            key={user.id} label={user.name}
+                            key={user?.id} label={user?.name}
                             onClick={() => {
                                 navigate(`/user/${user.id}`)
                             }}/>)

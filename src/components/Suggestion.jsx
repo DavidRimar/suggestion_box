@@ -21,7 +21,7 @@ function Suggestion({id, title, description, onDelete}) {
                 <Button size="small" variant={"outlined"} fullWidth onClick={() => {
                         navigate(`/suggestion/${id}`)
                 }}>Details</Button>
-                <IconButton onClick={onLikeChange}>
+                <IconButton onClick={() => onLikeChange()}>
                     {isLiked ? <Favorite/> : <FavoriteBorder/>}
                 </IconButton>
                 {onDelete && <IconButton onClick={onDelete}>
