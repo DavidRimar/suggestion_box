@@ -1,17 +1,12 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Suggestion from "../../../components/Suggestion"
-import { AXIOS_METHOD, useApi } from "../../../hooks/useApi";
 import LoadingBar from "../../../components/LoadingBar";
 import { useNavigate } from "react-router-dom";
+import useSuggestions from "../../../hooks/useSuggestions";
 
 function ListScreen() {
     const navigate = useNavigate();
-    const [suggestionList, loading, error] = useApi(AXIOS_METHOD.POST, '/suggestions', 
-    {
-        "author": "",
-        "limit": 5,
-        "cursor": ""
-    });
+    const [suggestionList, loading, error, onMore] = useSuggestions("", 1);
 
     console.log(suggestionList)
 
@@ -31,6 +26,7 @@ function ListScreen() {
                                 title={item?.title}
                     />)
         })}
+        <Button onClick={onMore}>Load More!</Button>
     </Grid>
 }
 
