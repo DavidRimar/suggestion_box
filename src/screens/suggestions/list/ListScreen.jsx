@@ -26,7 +26,9 @@ function ListScreen() {
                                 title={item?.title}
                     />)
         })}
-        <Button onClick={onMore}>Load More!</Button>
+        <Grid item xs={12}>
+            <Button variant="outlined" onClick={onMore} fullWidth>Load More!</Button>
+        </Grid>
     </Grid>
 }
 
