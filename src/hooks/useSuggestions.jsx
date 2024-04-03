@@ -15,7 +15,7 @@ export default function useSuggestions(author = "", limit = 5) {
                 if (oldSuggestions === false || newCursor === "") {
                     return responseData?.suggestions;
                 }
-                return {...oldSuggestions, ...responseData?.suggestions}
+                return [...oldSuggestions, ...responseData?.suggestions]
             });
             setCursor(responseData?.cursor);
             setError(false);

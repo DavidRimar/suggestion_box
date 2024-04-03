@@ -6,9 +6,9 @@ import useSuggestions from "../../../hooks/useSuggestions";
 
 function ListScreen() {
     const navigate = useNavigate();
-    const [suggestionList, loading, error, onMore] = useSuggestions("", 1);
+    const [suggestions, loading, error, onMore] = useSuggestions("", 3);
 
-    console.log(suggestionList)
+    console.log(suggestions)
 
     if (loading === true) {
         return <LoadingBar/>;
@@ -20,7 +20,7 @@ function ListScreen() {
     }
 
     return <Grid container spacing={2}>
-        {suggestionList?.suggestions?.map(item => {
+        {suggestions.map(item => {
             return (<Suggestion key={item?.id} id={item?.id} 
                                 description={item?.description} 
                                 title={item?.title}
