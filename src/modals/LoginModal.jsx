@@ -12,7 +12,7 @@ function LoginModal({onClose}) {
         <DialogTitle>Login</DialogTitle>
         <DialogContent>
             <br/>
-            <Formik initialValues={{}} onSubmit={(values, actions) => {
+            <Formik initialValues={{ name: '', password: ''}} onSubmit={(values, actions) => {
                 actions.setSubmitting(true);
                 makeApiCall(AXIOS_METHOD.POST, '/login', (data) => {
                     handleLoginResult(data);

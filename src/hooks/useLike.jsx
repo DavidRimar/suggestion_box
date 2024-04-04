@@ -12,11 +12,10 @@ function getLikedIdsFromSessionUser(sessionUser) {
 }
 
 export default function useLike(suggestionId) {
-    const { sessionUser, setSessionUser, authToken } = useAuth();
     const { showModal } = useModals();
+    const { sessionUser, authToken, setSessionUser } = useAuth();
     const likedIds = getLikedIdsFromSessionUser(sessionUser);
     const currentLiked = likedIds.includes(suggestionId);
-
     const [isLiked, setIsLiked] = useState(currentLiked);
 
     // handle like change
@@ -27,7 +26,7 @@ export default function useLike(suggestionId) {
     // show LoginModal if user is not logged in (onLikeChange)
     // otherwise, like/unlike with axios
 
-    const onLikeChange = useCallback(() => {
+    const onLikeChange = useCallback((onSuccessChange = false) => {
         
         if (authToken === false) {
             showModal(MODALS.LOGIN);
@@ -38,6 +37,9 @@ export default function useLike(suggestionId) {
             (newUserData) => {
                 // success
                 setSessionUser(newUserData);
+                if (onSuccessChange !== false) {
+                    onSuccessChange();
+                }
             }, () => {
                 // error
                 setIsLiked(isLiked);

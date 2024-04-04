@@ -25,7 +25,7 @@ export function AuthContextProvider({children}) {
     );
 
     return (
-        <AuthContext.Provider value={{authToken, sessionUser, handleLoginResult, handleLogout}}>
+        <AuthContext.Provider value={{authToken, sessionUser, handleLoginResult, handleLogout, setSessionUser}}>
             {children}
         </AuthContext.Provider>
     );

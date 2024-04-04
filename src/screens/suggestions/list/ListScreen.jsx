@@ -1,19 +1,14 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Suggestion from "../../../components/Suggestion"
-import { AXIOS_METHOD, useApi } from "../../../hooks/useApi";
 import LoadingBar from "../../../components/LoadingBar";
 import { useNavigate } from "react-router-dom";
+import useSuggestions from "../../../hooks/useSuggestions";
 
 function ListScreen() {
     const navigate = useNavigate();
-    const [suggestionList, loading, error] = useApi(AXIOS_METHOD.POST, '/suggestions', 
-    {
-        "author": "",
-        "limit": 5,
-        "cursor": ""
-    });
+    const [suggestions, loading, error, onMore] = useSuggestions("", 3);
 
-    console.log(suggestionList)
+    console.log(suggestions)
 
     if (loading === true) {
         return <LoadingBar/>;
@@ -25,12 +20,15 @@ function ListScreen() {
     }
 
     return <Grid container spacing={2}>
-        {suggestionList?.suggestions?.map(item => {
-            return (<Suggestion id={item?.id} 
+        {suggestions.map(item => {
+            return (<Suggestion key={item?.id} id={item?.id} 
                                 description={item?.description} 
                                 title={item?.title}
                     />)
         })}
+        <Grid item xs={12}>
+            <Button variant="outlined" onClick={onMore} fullWidth>Load More!</Button>
+        </Grid>
     </Grid>
 }
 

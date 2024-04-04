@@ -15,7 +15,6 @@ export const MODALS = {
     'ERROR': 'ERROR'
 };
 
-/* eslint-disable default-case */
 export function Modals() {
     return (
         <ModalContext.Consumer>

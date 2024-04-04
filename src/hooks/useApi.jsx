@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const BASE_URL = "https://otletdoboz.webuni.workers.dev";
 export const AXIOS_METHOD = {
@@ -11,7 +11,7 @@ let authToken = false;
 
 export function setApiToken(newToken) {
     authToken = newToken;
-};
+}
 
 export function makeApiCall(method, url, onSuccess, onFailure = false, data = {}) {
     axios({
@@ -30,12 +30,12 @@ export function makeApiCall(method, url, onSuccess, onFailure = false, data = {}
     });
 }
 
-export function useApi(method, uri, postData = undefined, deps = []) {
+export function useApi(method, uri, data = undefined, deps = []) {
     const [responseData, setResponseData] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    useEffect(() => {
+    const apiCallback = useCallback((apiResponseData) => {
         setLoading(true);
         makeApiCall(method, uri, (response) => {
             setResponseData(response);
@@ -45,8 +45,12 @@ export function useApi(method, uri, postData = undefined, deps = []) {
             setError(errorMessage);
             setResponseData(false);
             setLoading(false);
-        }, postData);
-    }, [uri, JSON.stringify(postData), ...deps]);
+        }, apiResponseData);
+    }, [method, uri, setResponseData, setLoading, setError]);
 
-    return [responseData, loading, error];
+    useEffect(() => {
+        apiCallback(data);
+    }, [apiCallback, uri, JSON.stringify(data), ...deps]);
+
+    return [responseData, loading, error, apiCallback];
 }
