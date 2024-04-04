@@ -1,14 +1,12 @@
 import { createTheme } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from "./hooks/useAuth";
 import { ModalContextProvider } from "./hooks/useModals";
-
-const theme = createTheme({ });
+import { ThemeProvider } from "./ThemeContext";
 
 function Provider({children}) {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
         <AuthContextProvider>
           <ModalContextProvider>
             <BrowserRouter>
