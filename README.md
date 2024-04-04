@@ -12,3 +12,4 @@ The suggestion box enables you to do the following operations:
     - View individual suggestion details
     - Add a new suggestion
     - Delete a suggestion
+    - Like/Unlike a suggestion
