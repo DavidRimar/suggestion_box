@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useModals, MODALS } from '../hooks/useModals';
 import { useTheme, themes } from "../ThemeContext";
-import "./AppMenu.css";
 import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
