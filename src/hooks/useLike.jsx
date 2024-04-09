@@ -47,7 +47,7 @@ export default function useLike(suggestionId) {
             }, {id: suggestionId});
         
         setIsLiked(oldLike => !oldLike);
-    }, [authToken, isLiked, setSessionUser, setIsLiked, showModal]);
+    }, [authToken, isLiked, setSessionUser, setIsLiked, showModal, suggestionId]);
 
     return [isLiked, onLikeChange];
 }

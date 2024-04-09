@@ -11,7 +11,6 @@ import Provider from './Provider';
 import AddScreen from './screens/suggestions/add/AddScreen';
 import { useAuth } from "./hooks/useAuth";
 
-// eslint-disable-next-line react/prop-types
 function ProtectedPage({children}) {
   const { authToken } = useAuth();
   if (authToken === false) {
