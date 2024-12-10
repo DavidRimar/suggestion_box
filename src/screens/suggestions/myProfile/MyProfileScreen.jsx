@@ -14,8 +14,7 @@ function MyProfilePage() {
     const [ suggestionList, loading, error, refreshedSuggestions ] = useApi(AXIOS_METHOD.POST, '/suggestions', 
     {
         "author": sessionUser?.id,
-        "limit": 5,
-        "cursor": ""
+        "limit": 5
     });
 
     function onDelete(id) {
@@ -26,8 +25,7 @@ function MyProfilePage() {
                     // when delete is successful, refresh suggestion list
                     refreshedSuggestions(    {
                         "author": sessionUser?.id,
-                        "limit": 5,
-                        "cursor": ""
+                        "limit": 5
                     });
                 }, (message) => {
                     // when delete is unsuccessful, show error
